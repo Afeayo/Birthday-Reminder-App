@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Customer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+    <style>
+        body {
+            background-color: #f7f7f7;
+            padding: 20px;
+        }
+        .ui.container {
+            margin-top: 50px;
+        }
+        .ui.form {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        }
+        h2.ui.header {
+            text-align: center;
+        }
+        .ui.button {
+            background-color: #21ba45;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="ui container">
+        <h2 class="ui header">Edit Customer Information</h2>
+        <form class="ui form" action="/admin/edit/<%= customer._id %>" method="POST">
+            <div class="field">
+                <label>Username</label>
+                <input type="text" name="username" value="<%= customer.username %>" required>
+            </div>
+            <div class="field">
+                <label>Email</label>
+                <input type="email" name="email" value="<%= customer.email %>" required>
+            </div>
+            <div class="field">
+                <label>Date of Birth</label>
+                <input type="date" name="dateOfBirth" value="<%= customer.dateOfBirth.toISOString().split('T')[0] %>" required>
+            </div>
+            <button type="submit" class="ui button">Save Changes</button>
+        </form>
+        <div style="margin-top: 20px;">
+            <a href="/admin/dashboard" class="ui button secondary">Back to Dashboard</a>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+</body>
+</html>
